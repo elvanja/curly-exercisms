@@ -10,8 +10,6 @@ defmodule School do
   """
   @spec add(Dict.t, String.t, pos_integer) :: Dict.t
   def add(db, name, grade) do
-    #Map.put(db, grade, [name | if(db[grade], do: db[grade], else: [])])
-    #Map.put(db, grade, [name | (if db[grade], do: db[grade], else: [])])
     Map.put(db, grade, [name | db[grade] || []])
   end
 
