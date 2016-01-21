@@ -9,6 +9,7 @@ ExUnit.configure exclude: :pending, trace: true
 
 defmodule PhoneTest do
   use ExUnit.Case, async: true
+  doctest Phone
 
   test "cleans number" do
     assert Phone.number("(123) 456-7890") == "1234567890"

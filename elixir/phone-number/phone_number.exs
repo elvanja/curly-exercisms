@@ -65,7 +65,7 @@ defmodule Phone do
   "(303) 555-1212"
 
   iex> Phone.pretty("867.5309")
-  "(000) 000-000x"
+  "(000) 000-0000"
   """
   @spec pretty(String.t) :: String.t
   def pretty(raw) do
