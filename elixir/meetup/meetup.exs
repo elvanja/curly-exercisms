@@ -30,7 +30,8 @@ defmodule Meetup do
   
   defp filter_by_schedule(dates, schedule) do
     #TODO see if there is a way to use this map as a constant, like @weekdays, problem due to unknown methods at constant declaration time
-    apply(%{:first => &first/1, :second => &second/1, :third => &third/1, :fourth => &fourth/1, :last => &last/1, :teenth => &teenth/1}[schedule], [dates])
+    schedule_filter = %{:first => &first/1, :second => &second/1, :third => &third/1, :fourth => &fourth/1, :last => &last/1, :teenth => &teenth/1}[schedule]
+    schedule_filter |> apply([dates])
   end
 
   defp first(dates) do
