@@ -24,7 +24,7 @@ defmodule Atbash do
       |> String.replace(~r/\W/, "")
       |> String.graphemes
       |> Enum.map(&(@cypher[&1] || &1))
-      |> Enum.chunk(5, 5, [nil, nil, nil, nil, nil])
+      |> Enum.chunk(5, 5, [])
       |> Enum.map(&(Enum.join(&1)))
       |> Enum.join(" ")
   end
