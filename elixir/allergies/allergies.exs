@@ -1,7 +1,7 @@
 defmodule Allergies do
   import Bitwise
 
-  @allergies %{
+  @allergens %{
     1 => "eggs",
     2 => "peanuts",
     4 => "shellfish",
@@ -17,16 +17,16 @@ defmodule Allergies do
   """
   @spec list(non_neg_integer) :: [String.t]
   def list(flags) do
-    @allergies |> Enum.filter(fn({flag, _}) ->
+    @allergens |> Enum.filter(fn({flag, _}) ->
       (flags &&& flag) != 0
     end) |> Dict.values
   end
   
   # an alternative implementation, using Stream.unfold/2
   def list_with_unfold(flags) do
-    Stream.unfold({flags, @allergies |> Enum.max |> elem(0)}, fn({_, 0}) -> nil; ({remaining, flag}) ->
+    Stream.unfold({flags, @allergens |> Enum.max |> elem(0)}, fn({_, 0}) -> nil; ({remaining, flag}) ->
       if flag <= remaining do
-        {@allergies[flag], {remaining - flag, flag}}
+        {@allergens[flag], {remaining - flag, flag}}
       else
         {nil, {remaining, Bitwise.bsr(flag, 1)}}
       end
