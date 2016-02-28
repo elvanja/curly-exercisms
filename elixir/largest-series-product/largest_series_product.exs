@@ -23,13 +23,10 @@ defmodule Series do
   def largest_product(_, 0) do
     1
   end
-  def largest_product("", size) when size > 0 do
+  def largest_product(number_string, size) when size > byte_size(number_string) do
     raise ArgumentError
   end
   def largest_product(number_string, size) do
-    if size > String.length(number_string) do
-      raise ArgumentError
-    end
     number_string |> slices(size) |> Enum.map(fn(slice) ->
       Enum.reduce(slice, 1, &(&1 * &2))
     end) |> Enum.max
