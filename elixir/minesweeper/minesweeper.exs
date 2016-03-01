@@ -11,11 +11,11 @@ defmodule Minesweeper do
   end
 
   defp to_matrix(board) do
-    board |> Enum.map(&(String.graphemes(&1)))
+    board |> Enum.map(&String.graphemes/1)
   end
 
   defp from_matrix(matrix) do
-    matrix |> Enum.map(&(Enum.join(&1)))
+    matrix |> Enum.map(&Enum.join/1)
   end
 
   defp merge(counts, matrix) do
@@ -55,7 +55,7 @@ defmodule Minesweeper do
   end
 
   defp shift_left(matrix) do
-    matrix |> Enum.map(&(shift_column(&1)))
+    matrix |> Enum.map(&shift_column/1)
   end
 
   defp shift_right(matrix) do
