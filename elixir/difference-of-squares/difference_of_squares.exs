@@ -8,7 +8,7 @@ defmodule Squares do
   """
   @spec sum_of_squares(pos_integer) :: pos_integer
   def sum_of_squares(number) do
-    1..number |> Enum.map(&(&1 * &1)) |> Enum.sum
+    1..number |> Enum.map(&(:math.pow(&1, 2))) |> Enum.sum
   end
 
   @doc """
@@ -16,7 +16,7 @@ defmodule Squares do
   """
   @spec square_of_sums(pos_integer) :: pos_integer
   def square_of_sums(number) do
-    1..number |> Enum.sum |> (&(&1 * &1)).()
+    1..number |> Enum.sum |> (&(:math.pow(&1, 2))).()
   end
 
   @doc """
