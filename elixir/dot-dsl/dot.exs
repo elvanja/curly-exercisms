@@ -28,13 +28,13 @@ defmodule Dot do
     quote do: %Graph{attrs: unquote(attrs)}
   end
 
-  defp build_graph({key, _, nil}) do
-    quote do: %Graph{nodes: [{unquote(key), []}]}
+  defp build_graph({node, _, nil}) do
+    quote do: %Graph{nodes: [{unquote(node), []}]}
   end
 
-  defp build_graph({key, _, [nodes]}) do
-    if Macro.escape(nodes) != nodes do; raise ArgumentError end
-    quote do: %Graph{nodes: [{unquote(key), unquote(nodes)}]}
+  defp build_graph({node, _, [keywords]}) do
+    if Macro.escape(keywords) != keywords do; raise ArgumentError end
+    quote do: %Graph{nodes: [{unquote(node), unquote(keywords)}]}
   end
 
   defp build_graph(nil) do
